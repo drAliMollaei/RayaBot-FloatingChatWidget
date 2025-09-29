@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای تغییر URL چت بات</title>
+    <style>
+        :root {
+            --primary-color: #1b4748;
+            --secondary-color: #2a6b6d;
+            --accent-color: #ff6b6b;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --code-bg: #2d2d2d;
+            --success-color: #28a745;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .note {
+            background: #e8f4f4;
+            border-right: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .code-container {
+            background: var(--code-bg);
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .file-name {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .steps {
+            background: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            right: -10px;
+            top: -5px;
+            background: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .code-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>راهنمای تغییر URL دستیار هوشمند</h1>
+            <p class="subtitle">آموزش تغییر آدرس چت بات در دو نسخه مختلف</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>مقدمه</h2>
+                <p>این راهنما به شما کمک می‌کند تا آدرس URL چت بات را در دو نسخه مختلف تغییر دهید. هر دو نسخه دارای عملکرد یکسان اما با روش‌های نمایش متفاوت هستند.</p>
+                <p>نمونه فایل های های HTML در فولدر SRC قراردارند.</p>
+                <p>"rayabot_chatpanel.html" : نمونه کد برای باز شدن پنل چت در صفحه جاری</p>
+                <p>"rayabot_newTab.html" : نمونه کد برای بازشدن پنل چت در تب جدید</p>
+                <p style="color: green; text-decoration: none;">در این راهنما فرض شده است آدرس دستیار هوشمند شما https://rayabot.ir/rayabot می باشد.</p>
+                <div class="note">
+                    <p><strong>توجه:</strong> برای تغییر آدرس چت بات، باید فایل‌های HTML مربوطه را ویرایش کرده و آدرس جدید را جایگزین آدرس فعلی کنید.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>نسخه ۱: چت بات در پنل داخلی (rayabot_chatpanel.html)</h2>
+                <p>در این نسخه، چت بات در یک پنل داخلی در همان صفحه نمایش داده می‌شود. برای تغییر آدرس، باید آدرس iframe را ویرایش کنید.</p>
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="file-name">rayabot_chatpanel.html</span>
+                    </div>
+                    <pre><code>&lt;div id="chatbot-container"&gt;
+    &lt;button id="chatbot-close"&gt;×&lt;/button&gt;
+    &lt;iframe id="chatbot-iframe" src="<span class="highlight">https://rayabot.ir/rayabot</span>"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="steps">
+                    <h3>مراحل تغییر URL:</h3>
+                    <div class="step" data-number="۱">
+                        فایل <code>rayabot_chatpanel.html</code> را در یک ویرایشگر متن باز کنید.
+                    </div>
+                    <div class="step" data-number="۲">
+                        خط مربوط به iframe چت بات را پیدا کنید (خط ۸۶ در کد اصلی).
+                    </div>
+                    <div class="step" data-number="۳">
+                        آدرس <code class="highlight">https://rayabot.ir/rayabot</code> را با آدرس جدید جایگزین کنید.
+                    </div>
+                    <div class="step" data-number="۴">
+                        فایل را ذخیره کرده و تغییرات را تست کنید.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>نسخه ۲: چت بات در تب جدید (rayabot_newtab.html)</h2>
+                <p>در این نسخه، با کلیک روی دکمه چت، یک تب جدید باز شده و چت بات نمایش داده می‌شود. برای تغییر آدرس، باید آدرس پنجره جدید را ویرایش کنید.</p>
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="file-name">rayabot_newtab.html</span>
+                    </div>
+                    <pre><code>// باز کردن چت بات در تب جدید هنگام کلیک روی دکمه
+chatbotBtn.addEventListener('click', () => {
+    window.open('<span class="highlight">https://rayabot.ir/rayabot</span>', '_blank');
+    chatbotBubble.style.display = 'none';
+});</code></pre>
+                </div>
+                
+                <div class="steps">
+                    <h3>مراحل تغییر URL:</h3>
+                    <div class="step" data-number="۱">
+                        فایل <code>rayabot_newtab.html</code> را در یک ویرایشگر متن باز کنید.
+                    </div>
+                    <div class="step" data-number="۲">
+                        بخش اسکریپت مربوط به باز کردن تب جدید را پیدا کنید (خط ۷۴ در کد اصلی).
+                    </div>
+                    <div class="step" data-number="۳">
+                        آدرس <code class="highlight">https://rayabot.ir/rayabot</code> را با آدرس جدید جایگزین کنید.
+                    </div>
+                    <div class="step" data-number="۴">
+                        فایل را ذخیره کرده و تغییرات را تست کنید.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>کدهای کامل برای</h2>
+                
+                <h3>کد کامل نسخه پنل داخلی:</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="file-name">rayabot_chatpanel.html - بخش iframe</span>
+                    </div>
+                    <pre><code>&lt;div id="chatbot-container"&gt;
+    &lt;button id="chatbot-close"&gt;×&lt;/button&gt;
+    &lt;iframe id="chatbot-iframe" src="<span class="highlight">https://rayabot.ir/rayabot</span>"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <h3>کد کامل نسخه تب جدید:</h3>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="file-name">rayabot_newtab.html - بخش اسکریپت</span>
+                    </div>
+                    <pre><code>&lt;script&gt;
+    const chatbotBtn = document.getElementById('chatbot-button');
+    const chatbotBubble = document.getElementById('chatbot-bubble');
+
+    // باز کردن چت بات در تب جدید هنگام کلیک روی دکمه
+    chatbotBtn.addEventListener('click', () => {
+        window.open('<span class="highlight">https://rayabot.ir/rayabot</span>', '_blank');
+        chatbotBubble.style.display = 'none';
+    });
+
+    // نمایش پیام خوشامد طبق بازدیدهای اول و بعدی
+    window.addEventListener('load', () => {
+        if (!localStorage.getItem('chatbotOpenedBefore')) {
+            setTimeout(() => {
+                chatbotBubble.style.display = 'block';
+                localStorage.setItem('chatbotOpenedBefore', 'true');
+            }, 5000);
+        } else {
+            setTimeout(() => {
+                chatbotBubble.style.display = 'block';
+            }, 3000);
+        }
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>نکات مهم</h2>
+                <div class="steps">
+                    <div class="step" data-number="۱">
+                        اطمینان حاصل کنید که آدرس جدید با پروتکل صحیح (http یا https) نوشته شده است.
+                    </div>
+                    <div class="step" data-number="۲">
+                        پس از تغییر آدرس، حتماً عملکرد چت بات را تست کنید.
+                    </div>
+                    <div class="step" data-number="۳">
+                        اگر از نسخه پنل داخلی استفاده می‌کنید، مطمئن شوید که آدرس جدید اجازه نمایش در iframe را می‌دهد.
+                    </div>
+                    <div class="step" data-number="۴">
+                        در صورت بروز هرگونه مشکل، تنظیمات CORS آدرس جدید را بررسی کنید.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>راهنمای تغییر URL چت بات | برای استفاده توسعه دهندگان</p>
+            
+            <p dir="rtl" style="text-align: center !important;">
+            <a href="https://rayabot.ir/rayabot" target="_blank" style="color: white; text-decoration: none;">
+                شرکت بهین برازش رایان پویش
+            </a>
+            </p>
+
+        </footer>
+    </div>
+</body>
+</html>
