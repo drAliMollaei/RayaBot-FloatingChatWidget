@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>چت بات پشتیبانی</title>
+    <style>
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 2px solid #1b4748;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 9999;
+        }
+        #chatbot-button:hover {
+            transform: scale(1.1);
+        }
+        /* پیام خوشامد */
+        #chatbot-bubble {
+            position: fixed;
+            bottom: 100px;
+            right: 90px;
+            background: #1b4748;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            max-width: 200px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 9999;
+        }
+        @media (max-width: 600px) {
+            #chatbot-bubble {
+                right: 20px;
+                bottom: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- محتوای صفحه -->
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+        <h1>صفحه نمونه برای نمایش چت بات</h1>
+        <p>این یک صفحه نمونه است که چت بات پشتیبانی در آن پیاده‌سازی شده است. چت بات در پایین سمت راست صفحه نمایش داده می‌شود.</p>
+        <p>برای تست عملکرد، به گوشه پایین سمت راست صفحه بروید و روی دکمه چت کلیک کنید.</p>
+    </div>
+
+    <!-- دکمه چت بات -->
+    <div id="chatbot-button" aria-label="پشتیبانی آنلاین" title="پشتیبانی آنلاین">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            width="40" height="40" viewBox="0 0 24 24" 
+            fill="none" stroke="#1b4748" stroke-width="2" 
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5
+                    a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <!-- پیام خوشامد -->
+    <div id="chatbot-bubble">سلام 👋، برای مشاوره و پشتیبانی اینجا کلیک کنید.  ↘️</div>
+
+    <script>
+        const chatbotBtn = document.getElementById('chatbot-button');
+        const chatbotBubble = document.getElementById('chatbot-bubble');
+
+        // باز کردن چت بات در تب جدید هنگام کلیک روی دکمه
+        chatbotBtn.addEventListener('click', () => {
+            window.open('https://rayabot.ir/rayabot', '_blank');
+            chatbotBubble.style.display = 'none'; // وقتی کلیک شد، پیام خوشامد محو شود
+        });
+
+        // نمایش پیام خوشامد طبق بازدیدهای اول و بعدی
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('chatbotOpenedBefore')) {
+                setTimeout(() => {
+                    chatbotBubble.style.display = 'block';
+                    localStorage.setItem('chatbotOpenedBefore', 'true');
+                }, 5000);
+            } else {
+                setTimeout(() => {
+                    chatbotBubble.style.display = 'block';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

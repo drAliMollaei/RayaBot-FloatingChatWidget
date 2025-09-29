@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت بات پشتیبانی</title>
+    <style>
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 2px solid #1b4748;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 9999;
+        }
+        #chatbot-button:hover {
+            transform: scale(1.1);
+        }
+        #chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px;
+            height: 520px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            z-index: 10000;
+            overflow: hidden;
+            background: #fff;
+        }
+        #chatbot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #chatbot-close {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: #ff4d4f;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 24px;
+            text-align: center;
+        }
+        /* پیام خوشامد */
+        #chatbot-bubble {
+            position: fixed;
+            bottom: 100px;
+            right: 90px;
+            background: #1b4748;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            max-width: 200px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 9999;
+        }
+        @media (max-width: 600px) {
+            #chatbot-container {
+                width: 90%;
+                height: 70%;
+                right: 5%;
+                bottom: 80px;
+            }
+            #chatbot-bubble {
+                right: 20px;
+                bottom: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- محتوای صفحه -->
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+        <h1>صفحه نمونه برای نمایش چت بات</h1>
+        <p>این یک صفحه نمونه است که چت بات پشتیبانی در آن پیاده‌سازی شده است. چت بات در پایین سمت راست صفحه نمایش داده می‌شود.</p>
+        <p>برای تست عملکرد، به گوشه پایین سمت راست صفحه بروید و روی دکمه چت کلیک کنید.</p>
+    </div>
+
+    <!-- چت بات -->
+    <div id="chatbot-button" aria-label="پشتیبانی آنلاین" title="پشتیبانی آنلاین">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            width="40" height="40" viewBox="0 0 24 24" 
+            fill="none" stroke="#1b4748" stroke-width="2" 
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5
+                    a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <div id="chatbot-container">
+        <button id="chatbot-close">×</button>
+        <iframe id="chatbot-iframe" src="https://rayabot.ir/rayabot"></iframe>
+    </div>
+
+    <div id="chatbot-bubble">سلام 👋، برای مشاوره و پشتیبانی اینجا کلیک کنید.  ↘️</div>
+
+    <script>
+        const chatbotBtn = document.getElementById('chatbot-button');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotBubble = document.getElementById('chatbot-bubble');
+
+        // باز و بسته کردن دستی
+        chatbotBtn.addEventListener('click', () => {
+            chatbotContainer.style.display = chatbotContainer.style.display === 'block' ? 'none' : 'block';
+            chatbotBubble.style.display = 'none'; // وقتی کلیک شد، پیام خوشامد محو بشه
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.style.display = 'none';
+        });
+
+        // فقط بار اول بازدید -> باز شدن خودکار بعد از 5 ثانیه
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('chatbotOpenedBefore')) {
+                setTimeout(() => {
+                    chatbotContainer.style.display = 'block';
+                    chatbotBubble.style.display = 'block';
+                    localStorage.setItem('chatbotOpenedBefore', 'true');
+                }, 5000);
+            } else {
+                // در بازدیدهای بعدی فقط bubble نشون بدیم
+                setTimeout(() => {
+                    chatbotBubble.style.display = 'block';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
