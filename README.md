@@ -1,1 +1,1 @@
-Read html file.
+Read FloatingChatWidget_ReadMe.html file.
